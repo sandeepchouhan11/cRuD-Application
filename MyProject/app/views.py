@@ -30,4 +30,15 @@ def user_delete(request, pk):
     User.objects.get(id=pk).delete()
     return redirect("/table/")
 
-    
+def update_deatials(request,uid):
+    persone = User.objects.get(id=uid)
+    return render(request, "update.html",{ "persone":persone})
+
+def update_view(request):
+    if request.method=="POST":
+        uid = request.POST['uid']
+        name = request.POST['name']
+        email =request.POST['email']
+        phone =request.POST['phone']
+        User.objects.filter(id=uid).update(name=name,email=email,phone=phone)
+        return redirect('/table/')
