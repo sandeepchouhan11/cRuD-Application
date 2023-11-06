@@ -6,4 +6,6 @@ urlpatterns = [
    path("table/",views.table),
    path("delete/<int:pk>/", views.user_delete, name='delete '),
 ]
+
+
  
